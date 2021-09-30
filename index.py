@@ -36,6 +36,23 @@ async def prefix(ctx, pref):
 async def ping(ctx):
     await ctx.send('{0}ms'.format(round(bot.latency * 1000)))
     
+loopevent = threading.Event()
+
+@bot.command(pass_context=True)
+async def stick(ctx, *, message):
+  try:
+    stickyMessageContent = message
+    while not loopevent.is_set():
+      await ctx.send(stickyMessageContent, delete_after=15.0);
+      await asyncio.sleep(15)
+  except:
+    print("error")
+
+@bot.command(pass_context=True)
+async def unstick(ctx):
+  stickyMessageContent = "";
+  loopevent.set()
+    
 #commands
 
 
