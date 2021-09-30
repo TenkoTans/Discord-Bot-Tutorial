@@ -3,7 +3,7 @@ import json
 #extra directories
 from discord.ext import commands
 from host import host
-from commands.levels import levels
+from commands import levels, economy, music, moderation
 
 intents = discord.Intents.default()
 intents.members = True
